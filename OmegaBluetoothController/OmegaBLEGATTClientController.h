@@ -5,7 +5,9 @@
 extern "C"
 {
 #endif
+#ifdef CONFIG_BT_ENABLE
 
+#endif
 #ifdef __cplusplus
 }
 #endif
