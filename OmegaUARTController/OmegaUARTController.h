@@ -10,14 +10,20 @@
  * File Created: Wednesday, 21st February 2024 4:43:55 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 29th March 2024 5:29:19 pm
- * Modified By: Omegaki113r (omegaki113r@gmail.com)
+ * Last Modified: Saturday, 30th March 2024 3:22:07 pm
+ * Modified By: 0m3g4ki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
  * -----
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 30-03-2024	0m3g4	following functions were added,
+ *                              OmegaUARTController_default_init
+ *                              OmegaUARTController_set_data_received_callback
+ *                      following data structures were added,
+ *                              OmegaUARTDataReceivedCallback
  */
 
 #ifndef __OMEGA_UART_CONTROLLER_H__
@@ -30,9 +36,6 @@ extern "C"
 
 #include <driver/gpio.h>
 #include <driver/uart.h>
-
-#define MINIMUM_UART_RX_QUEUE_SIZE 5
-#define MINIMUM_UART_RING_BUFFER_SIZE 200
 
     typedef enum
     {
@@ -80,6 +83,8 @@ extern "C"
     /// @brief OmegaUARTHandle that needs to be used to operate using UARTController
     typedef uint64_t OmegaUARTHandle;
 
+    typedef void (*OmegaUARTDataReceivedCallback)(uint8_t *, size_t);
+
     /**
      * @brief initialize the UARTSystemController which is responsible for allocating and deallocating the each individual UART buses.
      *          This needs to be called before trying to initialize any UART buses
@@ -103,7 +108,27 @@ extern "C"
      * @return OmegaUARTHandle Identifier for the initialized bus. If `OmegaUARTController_init()` was success returned `OmegaUARTHandle` will be greater than 0
      */
     OmegaUARTHandle OmegaUARTController_init(uart_port_t in_uart_port, gpio_num_t in_tx_pin, gpio_num_t in_rx_pin, uint32_t in_baudrate, UART_Data_Bits in_data_bits, UART_Parity in_parity, UART_Stop_Bits in_stop_bits);
-
+    /**
+     * @brief initialize an UART bus with default parameters.
+     *  baud rate   => 115200
+     *  data bits   => 8 bits
+     *  parity      => no parity
+     *  stop bits   => 1 stop bits
+     *
+     * @param in_uart_port input parameter. UART bus that needs to be used for the operation
+     * @param in_tx_pin input parameter. TX pin that will be used for the UART bus. Can be NULL
+     * @param in_rx_pin input parameter. RX pin that will be used for the UART bus. can be NULL
+     * @return OmegaUARTHandle Identifier for the initialized bus. If `OmegaUARTController_init()` was success returned `OmegaUARTHandle` will be greater than 0
+     */
+    OmegaUARTHandle OmegaUARTController_default_init(uart_port_t in_uart_port, gpio_num_t in_tx_pin, gpio_num_t in_rx_pin);
+    /**
+     * @brief add a function callback for data received events for the specified UART bus handle
+     *
+     * @param in_handle input parameter. Handle that refers to a previously initialized UART bus using `OmegaUARTController_init()`
+     * @param in_callback input parameter. add a callback to to application layer from the UART bus
+     * @return UARTControllerStatus UARTCTRL_SUCCESS if `OmegaUARTController_set_data_received_callback()` operation was success
+     */
+    UARTControllerStatus OmegaUARTController_set_data_received_callback(OmegaUARTHandle in_handle, OmegaUARTDataReceivedCallback in_callback);
     /**
      * @brief start UART bus with the configurations
      *
