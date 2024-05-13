@@ -6,16 +6,16 @@ extern "C"
 {
 #endif
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <freertos/FreeRTOS.h>
 #include <freertos/semphr.h>
 
-#include <esp_log.h>
 #include <driver/gpio.h>
 #include <driver/spi_master.h>
+#include <esp_log.h>
 
     typedef struct
     {
@@ -40,8 +40,8 @@ extern "C"
     void OmegaSPIController_set_spi_clock_speed_hz(OmegaSPIController_t *, uint32_t);
     void OmegaSPIController_initialize(OmegaSPIController_t *);
     void OmegaSPIController_spi_write_byte(OmegaSPIController_t *, uint8_t *, size_t);
-    void OmegaSPIController_spi_read_byte(OmegaSPIController_t *, uint8_t *, uint8_t *, size_t);
-    uint8_t OmegaSPIController_spi_transfer(OmegaSPIController_t *, uint8_t);
+    void OmegaSPIController_spi_transfer(OmegaSPIController_t *, uint8_t *, uint8_t *, size_t);
+    uint8_t OmegaSPIController_spi_read_byte(OmegaSPIController_t *, uint8_t);
     void OmegaSPIController_write(OmegaSPIController_t *, uint8_t *, size_t);
     void OmegaSPIController_read(OmegaSPIController_t *, uint8_t *, size_t);
 
