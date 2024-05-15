@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Tuesday, 14th May 2024 3:57:07 pm
+ * Last Modified: Wednesday, 15th May 2024 3:02:13 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -63,12 +63,11 @@ extern "C"
     /// @brief Handle that will be used to operate the driver on slave mode
     typedef uint64_t OmegaI2CSlaveHandle;
 
-    I2CControllerStatus OmegaI2CSystemController_init();
-    void OmegaI2CSystemController_deinit();
     OmegaI2CMasterHandle OmegaI2CMasterController_init(i2c_port_t, gpio_num_t, gpio_num_t);
     I2CControllerStatus OmegaI2CMasterController_deinit(OmegaI2CMasterHandle);
     I2CControllerStatus OmegaI2CMasterController_scan_i2c_bus(OmegaI2CMasterHandle, bool);
     I2CControllerStatus OmegaI2CMasterController_add_device(OmegaI2CMasterHandle, uint8_t, uint32_t);
+    I2CControllerStatus OmegaI2CMasterController_read_register(OmegaI2CMasterHandle, uint8_t, uint8_t *, uint8_t, uint32_t);
     // I2CControllerStatus OmegaI2CController_set_i2c_port(OmegaI2CMasterHandle, i2c_port_t);
     // I2CControllerStatus OmegaI2CController_set_i2c_mode(OmegaI2CMasterHandle, i2c_mode_t);
     // I2CControllerStatus OmegaI2CController_set_i2c_pins(OmegaI2CMasterHandle, gpio_num_t, gpio_num_t);
