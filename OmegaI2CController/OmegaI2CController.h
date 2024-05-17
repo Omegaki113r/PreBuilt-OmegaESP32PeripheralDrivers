@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 17th May 2024 4:42:14 pm
+ * Last Modified: Friday, 17th May 2024 10:04:44 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -135,25 +135,27 @@ extern "C"
      */
     I2CControllerStatus OmegaI2CMasterController_write_byte(OmegaI2CSlaveDeviceHandle in_handle, uint8_t in_data, uint32_t in_timeout_ms);
     /**
-     * @brief Used to read a single byte from I2C slave device address
+     * @brief Used to read from I2C slave device address
      *
      * @param in_handle input parameter of type `OmegaI2CSlaveDeviceHandle`. Reference to a slave device handle that was previously added to a master I2C bus
      * @param in_register input parameter of type `uint8_t`. Reference to the register address of the slave device that needs to be read.
-     * @param out_register_data output parameter of type `uint8_t*`. This will be used to store the byte read from the slave device
+     * @param out_register_data output parameter of type `uint8_t*`. This will be used to store the bytes read from the slave device
+     * @param in_read_length input parameter of type `size_t`. This is the amount of bytes that will be read from the slave device
      * @param in_timeout_ms input parameter of type `uint32_t`. This is the timeout in miliseconds that the I2C peripheral will wait for the data
-     * @return I2CControllerStatus I2CCTRL_INVALID_PARAMETERS if in_handle is not initialized, not valid or out_register_data is NULL. I2CCTRL_FAILED if timeout occured. I2CCTRL_SUCCESS otherwise
+     * @return I2CControllerStatus I2CControllerStatus I2CCTRL_INVALID_PARAMETERS if in_handle is not initialized, not valid or out_register_data is NULL. I2CCTRL_FAILED if timeout occured. I2CCTRL_SUCCESS otherwise
      */
-    I2CControllerStatus OmegaI2CMasterController_read_register(OmegaI2CMasterHandle in_handle, uint8_t in_register, uint8_t *out_register_data, uint32_t in_timeout_ms);
+    I2CControllerStatus OmegaI2CMasterController_read_register(OmegaI2CMasterHandle in_handle, uint8_t in_register, uint8_t *out_register_data, size_t in_read_length, uint32_t in_timeout_ms);
     /**
-     * @brief Used to write a single byte to I2C slave device address
+     * @brief Used to write to I2C slave device address
      *
      * @param in_handle input parameter of type `OmegaI2CSlaveDeviceHandle`. Reference to a slave device handle that was previously added to a master I2C bus
      * @param in_register input parameter of type `uint8_t`. Reference to the register address of the slave device that needs to be read.
-     * @param in_register_data input parameter of type `uint8_t`. This is the byte that will be written to the slave device
+     * @param in_register_data input parameter of type `uint8_t*`. These are the bytes that will be written to the slave device
+     * @param in_write_length input parameter of type `size_t`. This is the amount of bytes that will be write to the slave device
      * @param in_timeout_ms input parameter of type `uint32_t`. This is the timeout in miliseconds that the I2C peripheral will wait for the data to be transmitted
-     * @return I2CControllerStatus I2CCTRL_INVALID_PARAMETERS if in_handle is not initialized, not validL. I2CCTRL_FAILED if timeout occured. I2CCTRL_SUCCESS otherwise
+     * @return I2CControllerStatus I2CControllerStatus I2CCTRL_INVALID_PARAMETERS if in_handle is not initialized, not validL. I2CCTRL_FAILED if timeout occured. I2CCTRL_SUCCESS otherwise
      */
-    I2CControllerStatus OmegaI2CMasterController_write_register(OmegaI2CMasterHandle in_handle, uint8_t in_register, uint8_t in_register_data, uint32_t in_timeout_ms);
+    I2CControllerStatus OmegaI2CMasterController_write_register(OmegaI2CMasterHandle in_handle, uint8_t in_register, uint8_t *in_register_data, size_t in_write_length, uint32_t in_timeout_ms);
 #ifdef __cplusplus
 }
 #endif
