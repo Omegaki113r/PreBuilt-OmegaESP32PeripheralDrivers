@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Tuesday, 21st May 2024 3:27:23 pm
+ * Last Modified: Wednesday, 22nd May 2024 1:28:52 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -61,75 +61,24 @@ extern "C"
       typedef uint64_t ServiceHandle;
       typedef uint64_t ProfileHandle;
 
-      typedef struct
-      {
-            uint16_t _descriptor_handle;
-            DescriptorHandle m_descriptor_handle;
-            UUIDLength len;
-            union
-            {
-                  uint16_t uuid16;
-                  uint32_t uuid32;
-                  uint8_t uuid128[UUID128];
-            } uuid;
-      } Descriptor_t;
-      typedef struct
-      {
-            uint16_t _characteristic_handle;
-            CharacteristicHandle m_characteristic_handle;
-            UUIDLength len;
-            union
-            {
-                  uint16_t uuid16;
-                  uint32_t uuid32;
-                  uint8_t uuid128[UUID128];
-            } uuid;
-            uint32_t m_idx;
-            uint32_t m_descriptor_buffer_size;
-            Descriptor_t *m_descriptors;
-      } Characteristic_t;
-      typedef struct
-      {
-            uint16_t _service_handle;
-            ServiceHandle m_service_handle;
-            UUIDLength len;
-            union
-            {
-                  uint16_t uuid16;
-                  uint32_t uuid32;
-                  uint8_t uuid128[UUID128];
-            } uuid;
-            uint32_t m_idx;
-            uint32_t m_characteristic_buffer_size;
-            Characteristic_t *m_characteristics;
-      } Service_t;
-      typedef struct
-      {
-            ProfileHandle m_profile_handle;
-            uint32_t m_idx;
-            uint32_t m_service_buffer_size;
-            Service_t *m_services;
-      } Profile_t;
-      typedef struct
-      {
-            uint32_t m_idx;
-            uint32_t m_profile_buffer_size;
-            Profile_t *m_profiles;
-      } BLEApplication_t;
-
-      ProfileHandle init_profile();
-      LESuccessStatus init_service16(ProfileHandle in_profile_handle, uint16_t in_uuid);
-      LESuccessStatus init_service32(ProfileHandle in_profile_handle, uint32_t in_uuid);
-      LESuccessStatus init_service128(ProfileHandle in_profile_handle, uint8_t in_uuid[UUID128]);
-      LESuccessStatus deinit_profile(ProfileHandle in_handle);
-
-      LESuccessStatus add_gatts_profile(Profile_t *in_profile);
+      LESuccessStatus add_gatts_profile(ProfileHandle in_profile);
       LESuccessStatus set_device_name(const char *in_device_name);
       LESuccessStatus set_advertising_device_name(const char *in_device_name);
       LESuccessStatus disable_advertising_device_name(bool in_device_name_enabled);
       LESuccessStatus start_advertising();
       LESuccessStatus stop_advertising();
       LESuccessStatus init_LE();
+
+      const DescriptorHandle add_descriptor16(CharacteristicHandle in_handle, uint16_t in_uuid);
+      const DescriptorHandle add_descriptor32(CharacteristicHandle in_handle, uint32_t in_uuid);
+      const DescriptorHandle add_descriptor128(CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
+      const CharacteristicHandle add_characteristic16(ServiceHandle in_handle, uint16_t in_uuid);
+      const CharacteristicHandle add_characteristic32(ServiceHandle in_handle, uint32_t in_uuid);
+      const CharacteristicHandle add_characteristic128(ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
+      const ServiceHandle add_service16(ProfileHandle in_handle, uint16_t in_uuid);
+      const ServiceHandle add_service32(ProfileHandle in_handle, uint32_t in_uuid);
+      const ServiceHandle add_service128(ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
+      const ProfileHandle add_profile();
 
 #endif
 
