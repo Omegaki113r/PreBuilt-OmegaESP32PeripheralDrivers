@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Wednesday, 22nd May 2024 2:53:17 am
+ * Last Modified: Wednesday, 22nd May 2024 7:43:55 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -61,6 +61,9 @@ extern "C"
       typedef uint64_t ServiceHandle;
       typedef uint64_t ProfileHandle;
 
+      typedef void (*disconnect_cb_t)(void);
+      typedef void (*connect_cb_t)(void);
+
       LESuccessStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
       LESuccessStatus OmegaLEController_set_device_name(const char *in_device_name);
       LESuccessStatus OmegaLEController_set_advertising_device_name(const char *in_device_name);
@@ -68,17 +71,19 @@ extern "C"
       LESuccessStatus OmegaLEController_start_advertising();
       LESuccessStatus OmegaLEController_stop_advertising();
       LESuccessStatus OmegaLEController_init_LE();
+      LESuccessStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
+      LESuccessStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
 
-       DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
-       DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
-       DescriptorHandle OmegaLEController_add_descriptor128(const CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
-       CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid);
-       CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid);
-       CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
-       ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
-       ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
-       ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
-       ProfileHandle OmegaLEController_add_profile();
+      DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
+      DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
+      DescriptorHandle OmegaLEController_add_descriptor128(const CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
+      CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid);
+      CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid);
+      CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
+      ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
+      ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
+      ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
+      ProfileHandle OmegaLEController_add_profile();
 
 #endif
 
