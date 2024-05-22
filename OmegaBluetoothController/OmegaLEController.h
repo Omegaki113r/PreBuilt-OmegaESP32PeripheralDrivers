@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Wednesday, 22nd May 2024 7:43:55 pm
+ * Last Modified: Thursday, 23rd May 2024 12:20:53 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -54,7 +54,7 @@ extern "C"
       {
             LE_SUCCESS,
             LE_FAILED,
-      } LESuccessStatus;
+      } LEControllerStatus;
 
       typedef uint64_t DescriptorHandle;
       typedef uint64_t CharacteristicHandle;
@@ -64,15 +64,15 @@ extern "C"
       typedef void (*disconnect_cb_t)(void);
       typedef void (*connect_cb_t)(void);
 
-      LESuccessStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
-      LESuccessStatus OmegaLEController_set_device_name(const char *in_device_name);
-      LESuccessStatus OmegaLEController_set_advertising_device_name(const char *in_device_name);
-      LESuccessStatus OmegaLEController_disable_advertising_device_name(bool in_device_name_enabled);
-      LESuccessStatus OmegaLEController_start_advertising();
-      LESuccessStatus OmegaLEController_stop_advertising();
-      LESuccessStatus OmegaLEController_init_LE();
-      LESuccessStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
-      LESuccessStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
+      LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
+      LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
+      LEControllerStatus OmegaLEController_set_advertising_device_name(const char *in_device_name);
+      LEControllerStatus OmegaLEController_disable_advertising_device_name(bool in_device_name_enabled);
+      LEControllerStatus OmegaLEController_start_advertising();
+      LEControllerStatus OmegaLEController_stop_advertising();
+      LEControllerStatus OmegaLEController_init_LE();
+      LEControllerStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
+      LEControllerStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
 
       DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
