@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 24th May 2024 12:11:14 am
+ * Last Modified: Friday, 24th May 2024 12:39:21 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -106,6 +106,8 @@ extern "C"
 
       typedef void (*disconnect_cb_t)(void);
       typedef void (*connect_cb_t)(ConnectionParameter_t *);
+      typedef void (*read_cb_t)(CharacteristicHandle, uint8_t *, size_t);
+      typedef void (*write_cb_t)(CharacteristicHandle, uint8_t *, size_t);
 
       LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
       LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
@@ -116,6 +118,8 @@ extern "C"
       LEControllerStatus OmegaLEController_init_LE();
       LEControllerStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
       LEControllerStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
+      LEControllerStatus OmegaLEController_set_read_callback(read_cb_t in_read_cb);
+      LEControllerStatus OmegaLEController_set_write_callback(write_cb_t in_write_cb);
 
       DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
