@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Thursday, 23rd May 2024 1:40:12 am
+ * Last Modified: Friday, 24th May 2024 12:11:14 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -79,13 +79,33 @@ extern "C"
             LE_FAILED,
       } LEControllerStatus;
 
+      /// @brief Connection update parameters
+      typedef struct
+      {
+            /// @brief Bluetooth device address
+            esp_bd_addr_t bda;
+            /// @brief Min connection interval [interval = min_int*1.25ms]
+            uint16_t min_int;
+            /// @brief Max connection interval [interval = max_int*1.25ms]
+            uint16_t max_int;
+            /// @brief Slave latency for the connection in number of connection events. Range: 0x0000 to 0x01F3
+            uint16_t latency;
+            /**
+             * @brief Supervision timeout for the LE Link.
+             *          Range: 0x000A to 0x0C80.
+             *          Mandatory Range: 0x000A to 0x0C80 Time = N * 10 msec
+             *          Time Range: 100 msec to 32 seconds
+             */
+            uint16_t timeout;
+      } ConnectionParameter_t;
+
       typedef uint64_t DescriptorHandle;
       typedef uint64_t CharacteristicHandle;
       typedef uint64_t ServiceHandle;
       typedef uint64_t ProfileHandle;
 
       typedef void (*disconnect_cb_t)(void);
-      typedef void (*connect_cb_t)(void);
+      typedef void (*connect_cb_t)(ConnectionParameter_t *);
 
       LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
       LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
