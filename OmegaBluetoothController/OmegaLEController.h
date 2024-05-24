@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 24th May 2024 5:01:52 pm
+ * Last Modified: Saturday, 25th May 2024 12:10:05 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -65,11 +65,15 @@ extern "C"
                 16 * CHAR2INT(uuid[0]) + CHAR2INT(uuid[1]),   \
       }
 
+#define UUID128(name, ...) \
+      uint8_t name[16] = {__VA_ARGS__};
+
 #define INITIAL_BUFFER_LEN 5
 
       typedef enum
       {
             LE_SUCCESS,
+            LE_INVALID_HANDLE,
             LE_FAILED,
       } LEControllerStatus;
 
@@ -85,6 +89,33 @@ extern "C"
             USER_RESPONSE,
             AUTO_RESPONSE,
       } AutoResponseStatus;
+
+      typedef enum
+      {
+            BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST,
+            READ = ESP_GATT_CHAR_PROP_BIT_READ,
+            WRITE_WITHOUT_RESPONSE = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,
+            WRITE = ESP_GATT_CHAR_PROP_BIT_WRITE,
+            NOTIFY = ESP_GATT_CHAR_PROP_BIT_NOTIFY,
+            INDICATE = ESP_GATT_CHAR_PROP_BIT_INDICATE,
+            AUTH = ESP_GATT_CHAR_PROP_BIT_AUTH,
+            EXTENDED = ESP_GATT_CHAR_PROP_BIT_EXT_PROP,
+      } CharacteristicProperty;
+
+      typedef enum
+      {
+            NO_PERMISSION,
+            READ_PERMISSION = ESP_GATT_PERM_READ,
+            ENCRYPT_READ_PERMISSION = ESP_GATT_PERM_READ_ENCRYPTED,
+            ENCRYPT_MITM_READ_PERMISSION = ESP_GATT_PERM_READ_ENC_MITM,
+            WRITE_PERMISSION = ESP_GATT_PERM_WRITE,
+            ENCRYPT_WRITE_PERMISSION = ESP_GATT_PERM_WRITE_ENCRYPTED,
+            ENCRYPT_MITM_WRITE_PERMISSION = ESP_GATT_PERM_WRITE_ENC_MITM,
+            SIGNED_WRITE_PERMISSION = ESP_GATT_PERM_WRITE_SIGNED,
+            SIGNED_MITM_WRITE_PERMISSION = ESP_GATT_PERM_WRITE_SIGNED_MITM,
+            AUTHORIZED_READ_PERMISSION = ESP_GATT_PERM_READ_AUTHORIZATION,
+            AUTHORIZED_WRITE_PERMISSION = ESP_GATT_PERM_WRITE_AUTHORIZATION,
+      } GATTPermission;
 
       /// @brief Connection update parameters
       typedef struct
@@ -106,14 +137,15 @@ extern "C"
             uint16_t timeout;
       } ConnectionParameter_t;
 
+      typedef uint64_t ConnectedDeviceHandle;
       typedef uint64_t DescriptorHandle;
       typedef uint64_t CharacteristicHandle;
       typedef uint64_t ServiceHandle;
       typedef uint64_t ProfileHandle;
 
-      typedef void (*disconnect_cb_t)(void);
-      typedef void (*connect_cb_t)(ConnectionParameter_t *);
-      typedef void (*read_cb_t)(CharacteristicHandle, uint8_t *, size_t);
+      typedef void (*disconnect_cb_t)(ConnectedDeviceHandle);
+      typedef void (*connect_cb_t)(ConnectedDeviceHandle, ConnectionParameter_t *);
+      typedef void (*read_cb_t)(CharacteristicHandle, uint8_t *, uint16_t *);
       typedef void (*write_cb_t)(CharacteristicHandle, uint8_t *, size_t);
 
       LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
@@ -138,6 +170,11 @@ extern "C"
       ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
       ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
       ProfileHandle OmegaLEController_add_profile();
+
+      LEControllerStatus OmegaLEController_send_notification(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_indication(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
+      LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
 
 #endif
 
