@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 24th May 2024 2:31:41 am
+ * Last Modified: Friday, 24th May 2024 5:01:52 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -69,6 +69,12 @@ extern "C"
 
       typedef enum
       {
+            LE_SUCCESS,
+            LE_FAILED,
+      } LEControllerStatus;
+
+      typedef enum
+      {
             UUID16 = ESP_UUID_LEN_16,
             UUID32 = ESP_UUID_LEN_32,
             UUID128 = ESP_UUID_LEN_128,
@@ -76,9 +82,9 @@ extern "C"
 
       typedef enum
       {
-            LE_SUCCESS,
-            LE_FAILED,
-      } LEControllerStatus;
+            USER_RESPONSE,
+            AUTO_RESPONSE,
+      } AutoResponseStatus;
 
       /// @brief Connection update parameters
       typedef struct
@@ -125,9 +131,9 @@ extern "C"
       DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor128(const CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
-      CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid);
-      CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid);
-      CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
+      CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid, AutoResponseStatus in_auto_response);
+      CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid, AutoResponseStatus in_auto_response);
+      CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128], AutoResponseStatus in_auto_response);
       ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
       ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
       ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
