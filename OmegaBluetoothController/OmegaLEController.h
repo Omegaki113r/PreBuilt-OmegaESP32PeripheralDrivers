@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Sunday, 26th May 2024 12:53:02 am
+ * Last Modified: Sunday, 26th May 2024 2:07:18 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -154,12 +154,10 @@ extern "C"
       LEControllerStatus OmegaLEController_change_scan_response_device_name_state(bool in_enable_device_name);
       LEControllerStatus OmegaLEController_change_advertising_tx_power_state(bool in_enable_tx_power);
       LEControllerStatus OmegaLEController_change_scan_response_tx_power_state(bool in_enable_tx_power);
-
       LEControllerStatus OmegaLEController_change_advertising_service_data(const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
       LEControllerStatus OmegaLEController_change_scan_response_service_data(const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
       LEControllerStatus OmegaLEController_change_advertising_manufacturer_data(const uint8_t *in_manufacturer_data_buffer, const uint16_t in_manufacturer_data_buffer_length);
       LEControllerStatus OmegaLEController_change_scan_response_manufacturer_data(const uint8_t *in_manufacturer_data_buffer, const uint16_t in_manufacturer_data_buffer_length);
-
       LEControllerStatus OmegaLEController_set_advertising_service_uuid16(uint16_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid32(uint32_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid128(uint8_t in_service_uuid[UUID128]);
@@ -184,12 +182,12 @@ extern "C"
       ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
       ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
       ProfileHandle OmegaLEController_add_profile();
-
-      LEControllerStatus OmegaLEController_send_notification(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
-      LEControllerStatus OmegaLEController_send_indication(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
       LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
       LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
 
+      LEControllerStatus OmegaLEController_send_notification(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_indication(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_set_characteristic_data(const CharacteristicHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
 #endif
 
 #ifdef __cplusplus
