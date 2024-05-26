@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Sunday, 26th May 2024 2:07:18 am
+ * Last Modified: Sunday, 26th May 2024 11:27:21 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -92,6 +92,13 @@ extern "C"
 
       typedef enum
       {
+            NOTIFICATION_INDICATION_DISABLED,
+            NOTIFICATION_ENABLED,
+            INDICATION_ENABLED,
+      } ResponseStatus;
+
+      typedef enum
+      {
             BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST,
             READ = ESP_GATT_CHAR_PROP_BIT_READ,
             WRITE_WITHOUT_RESPONSE = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,
@@ -147,6 +154,7 @@ extern "C"
       typedef void (*connect_cb_t)(ConnectedDeviceHandle, ConnectionParameter_t *);
       typedef void (*read_cb_t)(CharacteristicHandle, uint8_t *, uint16_t *);
       typedef void (*write_cb_t)(CharacteristicHandle, uint8_t *, size_t);
+      typedef void (*notification_state_change_cb_t)(CharacteristicHandle, ResponseStatus);
 
       LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
       LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
@@ -171,6 +179,7 @@ extern "C"
       LEControllerStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
       LEControllerStatus OmegaLEController_set_read_callback(read_cb_t in_read_cb);
       LEControllerStatus OmegaLEController_set_write_callback(write_cb_t in_write_cb);
+      LEControllerStatus OmegaLEController_set_notification_state_changed_callback(notification_state_change_cb_t in_notification_state_changed_cb);
 
       DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
