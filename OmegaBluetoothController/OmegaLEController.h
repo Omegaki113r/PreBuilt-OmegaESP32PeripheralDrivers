@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Monday, 27th May 2024 9:08:43 pm
+ * Last Modified: Tuesday, 28th May 2024 10:43:29 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -19,6 +19,7 @@
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
  */
+
 #ifndef __OMEGA_LE_CONTROLLER_H__
 #define __OMEGA_LE_CONTROLLER_H__
 
