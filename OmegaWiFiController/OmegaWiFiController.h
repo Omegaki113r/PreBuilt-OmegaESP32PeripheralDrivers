@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Thursday, 30th May 2024 3:39:22 am
+ * Last Modified: Thursday, 30th May 2024 5:28:09 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,10 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ * 
+ * 30-05-2024	0m3g4	adding access point feature
+ *
+ * 30-05-2024	0m3g4	adding OmegaWiFiController_set_sta_provisioning,OmegaWiFiController_set_station_status_changed_callback APIs
  *
  * 29-05-2024	0m3g4	initial developemt started
  */
@@ -46,6 +50,13 @@ extern "C"
 
     typedef enum
     {
+        AP_CONNECTED,
+        AP_DISCONNECTED,
+        AP_GOT_IP,
+    } APStatus;
+
+    typedef enum
+    {
         StationMode,
         AccessPointMode,
         DualMode,
@@ -59,7 +70,7 @@ extern "C"
 
     typedef uint64_t AccessPointHandle;
     typedef void (*sta_status_changed_cb_t)(StationStatus);
-    typedef void (*ap_assigned_ip_cb_t)(void);
+    typedef void (*ap_status_changed_cb_t)(APStatus);
     typedef void (*scan_result_cb_t)(AccessPoint_t *, size_t);
 
     WiFiControllerStatus OmegaWiFiController_initialize(WiFiControllerMode in_mode);
@@ -70,6 +81,7 @@ extern "C"
     WiFiControllerStatus OmegaWiFiController_start_scan();
     WiFiControllerStatus OmegaWiFiController_set_scan_result_callback(scan_result_cb_t in_scan_result_cb);
     WiFiControllerStatus OmegaWiFiController_set_station_status_changed_callback(sta_status_changed_cb_t in_station_status_cb);
+    WiFiControllerStatus OmegaWiFiController_set_access_point_status_changed_callback(ap_status_changed_cb_t in_access_point_status_cb);
 
 #ifdef __cplusplus
 }
