@@ -6,32 +6,39 @@ extern "C"
 {
 #endif
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+    typedef enum
+    {
+        WIFICTRL_SUCCESS,
+        WIFICTRL_FAILED,
+    } WiFiControllerStatus;
 
-#include <esp_log.h>
-#include <esp_wifi.h>
+    typedef enum
+    {
+        StationMode,
+        AccessPointMode,
+        DualMode,
+    } WiFiControllerMode;
 
-#define WIFI_CONTROLLER_TAG "[OMEGA_WIFI_LOG]"
+    typedef struct
+    {
+        char m_ssid[33];
+        uint8_t m_mac_address[8];
+    } AccessPoint_t;
 
-typedef struct
-{
-    wifi_init_config_t m_wifi_init_config;
-    wifi_config_t m_sta_config;
-    wifi_config_t m_ap_config;
-    esp_event_handler_t m_callback;
-    uint8_t m_sta_max_retry_count;
-    uint8_t m_sta_retry_count;
-} OmegaWiFiController_t;
+    typedef uint64_t AccessPointHandle;
+    typedef void (*sta_connected_cb_t)(void);
+    typedef void (*sta_disconnected_cb_t)(void);
+    typedef void (*sta_got_ip_cb_t)(void);
+    typedef void (*ap_assigned_ip_cb_t)(void);
+    typedef void (*scan_result_cb_t)(AccessPoint_t *, size_t);
 
-void OmegaWiFiController_reset_module(OmegaWiFiController_t *);
-void OmegaWiFiController_set_sta_provisioning(OmegaWiFiController_t *, const char *, const char *);
-void OmegaWiFiController_set_ap_provisioning(OmegaWiFiController_t *, const char *, const char *);
-void OmegaWiFiController_set_callback(OmegaWiFiController_t *, esp_event_handler_t);
-void OmegaWiFiController_initialize(OmegaWiFiController_t *);
-
-void _OmegaWiFiController_callback(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
+    WiFiControllerStatus OmegaWiFiController_initialize(WiFiControllerMode in_mode);
+    WiFiControllerStatus OmegaWiFiController_deinitialize();
+    WiFiControllerStatus OmegaWiFiController_set_sta_provisioning(const char *in_ssid, const char *in_password);
+    WiFiControllerStatus OmegaWiFiController_set_ap_provisioning(const char *in_ssid, const char *in_password);
+    WiFiControllerStatus OmegaWiFiController_start();
+    WiFiControllerStatus OmegaWiFiController_start_scan();
+    WiFiControllerStatus OmegaWiFiController_set_scan_result_callback(scan_result_cb_t in_scan_result_cb);
 
 #ifdef __cplusplus
 }
