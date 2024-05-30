@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Thursday, 30th May 2024 5:28:09 am
+ * Last Modified: Friday, 31st May 2024 1:02:05 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ * 
+ * 31-05-2024	0m3g4	adding dual mode
  * 
  * 30-05-2024	0m3g4	adding access point feature
  *
