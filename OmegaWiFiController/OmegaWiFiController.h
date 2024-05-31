@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 31st May 2024 3:51:10 am
+ * Last Modified: Friday, 31st May 2024 4:48:38 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 31-05-2024	0m3g4	implementation of OmegaWiFiController_config
  *
  * 31-05-2024	0m3g4	adding dual mode
  *
