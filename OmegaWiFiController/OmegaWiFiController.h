@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 31st May 2024 7:55:25 pm
+ * Last Modified: Friday, 31st May 2024 9:02:34 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 31-05-2024	0m3g4	complete implementation of OmegaWiFiController_manual_config, OmegaWiFiController_config and auto retry feature
  *
  * 31-05-2024	0m3g4	implementation of OmegaWiFiController_manual_config
  *
