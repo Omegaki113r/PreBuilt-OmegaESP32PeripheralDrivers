@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 31st May 2024 4:48:38 am
+ * Last Modified: Friday, 31st May 2024 7:55:25 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -19,7 +19,7 @@
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
  *
- * 31-05-2024	0m3g4	implementation of OmegaWiFiController_config
+ * 31-05-2024	0m3g4	implementation of OmegaWiFiController_manual_config
  *
  * 31-05-2024	0m3g4	adding dual mode
  *
@@ -78,7 +78,8 @@ extern "C"
     typedef void (*ap_status_changed_cb_t)(APStatus);
     typedef void (*scan_result_cb_t)(AccessPoint_t *, size_t);
 
-    WiFiControllerStatus OmegaWiFiController_config(const char *in_json_str);
+    WiFiControllerStatus OmegaWiFiController_manual_config(const char *in_json_str);
+    WiFiControllerStatus OmegaWiFiController_config();
     WiFiControllerStatus OmegaWiFiController_initialize(WiFiControllerMode in_mode);
     WiFiControllerStatus OmegaWiFiController_deinitialize();
     WiFiControllerStatus OmegaWiFiController_set_sta_provisioning(const char *in_ssid, const char *in_password, uint16_t in_retry_count);
