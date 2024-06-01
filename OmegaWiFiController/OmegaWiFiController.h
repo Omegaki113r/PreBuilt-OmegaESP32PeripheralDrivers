@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 31st May 2024 9:02:34 pm
+ * Last Modified: Saturday, 1st June 2024 8:25:40 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 01-06-2024	0m3g4	build with __attribute__((weak)) for user callback
  *
  * 31-05-2024	0m3g4	complete implementation of OmegaWiFiController_manual_config, OmegaWiFiController_config and auto retry feature
  *
@@ -79,6 +81,10 @@ extern "C"
     typedef void (*sta_status_changed_cb_t)(StationStatus);
     typedef void (*ap_status_changed_cb_t)(APStatus);
     typedef void (*scan_result_cb_t)(AccessPoint_t *, size_t);
+
+    __attribute__((weak)) void scan_result_callback(AccessPoint_t *, size_t);
+    __attribute__((weak)) void station_state_changed(StationStatus);
+    __attribute__((weak)) void access_point_state_changed(APStatus);
 
     WiFiControllerStatus OmegaWiFiController_manual_config(const char *in_json_str);
     WiFiControllerStatus OmegaWiFiController_config();
