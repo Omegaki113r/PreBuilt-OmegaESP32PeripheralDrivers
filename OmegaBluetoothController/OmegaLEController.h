@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Tuesday, 28th May 2024 10:43:29 pm
+ * Last Modified: Sunday, 2nd June 2024 8:22:08 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -176,6 +176,7 @@ extern "C"
       LEControllerStatus OmegaLEController_start_advertising();
       LEControllerStatus OmegaLEController_stop_advertising();
       LEControllerStatus OmegaLEController_init_LE();
+      LEControllerStatus OmegaLEController_get_bluetooth_mac_address(uint8_t in_mac_address[6]);
       LEControllerStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
       LEControllerStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
       LEControllerStatus OmegaLEController_set_read_callback(read_cb_t in_read_cb);
