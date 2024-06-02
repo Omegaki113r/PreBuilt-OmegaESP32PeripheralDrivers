@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Sunday, 2nd June 2024 8:22:08 pm
+ * Last Modified: Sunday, 2nd June 2024 10:34:04 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -170,6 +170,8 @@ extern "C"
       LEControllerStatus OmegaLEController_set_advertising_service_uuid16(uint16_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid32(uint32_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid128(uint8_t in_service_uuid[UUID128]);
+      LEControllerStatus OmegaLEController_change_advertising_service128bit_data(uint8_t in_service_uuid[UUID128], const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
+      LEControllerStatus OmegaLEController_change_manufacturer_data(const uint8_t *manufacturer_data, const size_t manufacturer_data_length);
       LEControllerStatus OmegaLEController_set_scan_response_service_uuid16(uint16_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_scan_response_service_uuid32(uint32_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_scan_response_service_uuid128(uint8_t in_service_uuid[UUID128]);
