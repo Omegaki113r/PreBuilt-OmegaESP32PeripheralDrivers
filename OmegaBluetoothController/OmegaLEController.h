@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Monday, 3rd June 2024 12:19:35 am
+ * Last Modified: Monday, 3rd June 2024 8:52:10 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,16 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 03-06-2024	0m3g4	added,
+                              OmegaLEController_set_descriptor_name
+                              OmegaLEController_remove_descriptor
+                              OmegaLEController_set_characteristic_name
+                              OmegaLEController_remove_characteristic
+                              OmegaLEController_set_service_name
+                              OmegaLEController_remove_service
+                              OmegaLEController_set_profile_name
+                              OmegaLEController_remove_profile
  */
 
 #ifndef __OMEGA_LE_CONTROLLER_H__
@@ -206,15 +216,23 @@ extern "C"
       DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
       DescriptorHandle OmegaLEController_add_descriptor128(const CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
+      LEControllerStatus OmegaLEController_remove_descriptor(const DescriptorHandle in_handle);
+      LEControllerStatus OmegaLEController_set_descriptor_name(const DescriptorHandle in_handle, const char in_descriptor_name[32]);
       LEControllerStatus OmegaLEController_set_descriptor_data(const DescriptorHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
       CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid);
       CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid);
       CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
+      LEControllerStatus OmegaLEController_remove_characteristic(const CharacteristicHandle in_handle);
+      LEControllerStatus OmegaLEController_set_characteristic_name(const CharacteristicHandle in_handle, const char in_characteristic_name[32]);
       LEControllerStatus OmegaLEController_set_characteristic_data(const CharacteristicHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
       ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
       ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
       ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
+      LEControllerStatus OmegaLEController_remove_service(const ServiceHandle in_handle);
+      LEControllerStatus OmegaLEController_set_service_name(const ServiceHandle in_handle, const char in_service_name[32]);
       ProfileHandle OmegaLEController_add_profile();
+      LEControllerStatus OmegaLEController_remove_profile(const ProfileHandle in_handle);
+      LEControllerStatus OmegaLEController_set_profile_name(const ProfileHandle in_handle, const char in_profile_name[32]);
       LEControllerStatus OmegaLEController_set_characteristic_response_state(const CharacteristicHandle in_handle, AutoResponseStatus in_auto_response);
       LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
       LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
