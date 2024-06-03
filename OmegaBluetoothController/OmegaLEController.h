@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Monday, 3rd June 2024 12:35:05 pm
+ * Last Modified: Tuesday, 4th June 2024 12:22:04 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,14 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 04-06-2024	0m3g4	added,
+                              OmegaLEController_manual_config
+                              __attribute__((weak)) void device_connected_event_handler
+                              __attribute__((weak)) void device_disconnected_event_handler
+                              __attribute__((weak)) void read_event_handler
+                              __attribute__((weak)) void write_event_handler
+                              __attribute__((weak)) void notification_change_event_handler
  *
  * 03-06-2024	0m3g4	added,
                               OmegaLEController_set_descriptor_name
@@ -186,6 +194,12 @@ extern "C"
       typedef void (*write_cb_t)(CharacteristicHandle, uint8_t *, size_t);
       typedef void (*notification_state_change_cb_t)(CharacteristicHandle, ResponseStatus);
 
+      __attribute__((weak)) void device_connected_event_handler(ConnectedDeviceHandle, ConnectionParameter_t *);
+      __attribute__((weak)) void device_disconnected_event_handler(ConnectedDeviceHandle);
+      __attribute__((weak)) void read_event_handler(CharacteristicHandle, uint8_t *, uint16_t *);
+      __attribute__((weak)) void write_event_handler(CharacteristicHandle, uint8_t *, uint16_t);
+      __attribute__((weak)) void notification_changed_event_handler(CharacteristicHandle, ResponseStatus);
+
       LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
       LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
       LEControllerStatus OmegaLEController_change_advertising_device_name_state(bool in_enable_device_name);
@@ -206,6 +220,7 @@ extern "C"
       LEControllerStatus OmegaLEController_set_scan_response_service_uuid128(uint8_t in_service_uuid[UUID128]);
       LEControllerStatus OmegaLEController_start_advertising();
       LEControllerStatus OmegaLEController_stop_advertising();
+      LEControllerStatus OmegaLEController_manual_config(const char *in_config);
       LEControllerStatus OmegaLEController_init_LE();
       LEControllerStatus OmegaLEController_get_bluetooth_mac_address(uint8_t in_mac_address[6]);
       LEControllerStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
