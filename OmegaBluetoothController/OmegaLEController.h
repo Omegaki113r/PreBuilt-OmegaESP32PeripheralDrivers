@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Monday, 3rd June 2024 8:52:10 am
+ * Last Modified: Monday, 3rd June 2024 12:35:05 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -128,6 +128,7 @@ extern "C"
 
       typedef enum
       {
+            NO_PROPERTY,
             BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST,
             READ = ESP_GATT_CHAR_PROP_BIT_READ,
             WRITE_WITHOUT_RESPONSE = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,
@@ -173,11 +174,11 @@ extern "C"
             uint16_t timeout;
       } ConnectionParameter_t;
 
-      typedef uint64_t ConnectedDeviceHandle;
-      typedef uint64_t DescriptorHandle;
-      typedef uint64_t CharacteristicHandle;
-      typedef uint64_t ServiceHandle;
-      typedef uint64_t ProfileHandle;
+      typedef uint32_t ConnectedDeviceHandle;
+      typedef uint32_t DescriptorHandle;
+      typedef uint32_t CharacteristicHandle;
+      typedef uint32_t ServiceHandle;
+      typedef uint32_t ProfileHandle;
 
       typedef void (*disconnect_cb_t)(ConnectedDeviceHandle);
       typedef void (*connect_cb_t)(ConnectedDeviceHandle, ConnectionParameter_t *);
