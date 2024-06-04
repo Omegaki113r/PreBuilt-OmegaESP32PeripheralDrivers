@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Tuesday, 4th June 2024 8:02:21 pm
+ * Last Modified: Tuesday, 4th June 2024 8:05:17 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -26,7 +26,6 @@
                               OmegaLEController_add_to_advertising_complete_service32bit_list
                               OmegaLEController_add_to_advertising_complete_service128bit_list
                               OmegaLEController_set_advertising_device_id
-
  *
  * 04-06-2024	0m3g4	added,
                               OmegaLEController_manual_config
@@ -218,21 +217,16 @@ extern "C"
       LEControllerStatus OmegaLEController_add_to_advertising_complete_service128bit_list(const uint8_t in_service_uuid[UUID128], bool is_scan_response);
       LEControllerStatus OmegaLEController_set_advertising_device_id(const char *device_id, bool is_scan_response);
 
-      LEControllerStatus OmegaLEController_set_scan_response_complete_device_name(const char *in_complete_device_name);
+
       LEControllerStatus OmegaLEController_change_advertising_tx_power_state(bool in_enable_tx_power, bool is_scan_response);
-      LEControllerStatus OmegaLEController_change_scan_response_tx_power_state(bool in_enable_tx_power);
+
       LEControllerStatus OmegaLEController_change_advertising_service_data(const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
-      LEControllerStatus OmegaLEController_change_scan_response_service_data(const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
       LEControllerStatus OmegaLEController_change_advertising_manufacturer_data(const uint8_t *in_manufacturer_data_buffer, const uint16_t in_manufacturer_data_buffer_length);
-      LEControllerStatus OmegaLEController_change_scan_response_manufacturer_data(const uint8_t *in_manufacturer_data_buffer, const uint16_t in_manufacturer_data_buffer_length);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid16(uint16_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid32(uint32_t in_service_uuid);
       LEControllerStatus OmegaLEController_set_advertising_service_uuid128(uint8_t in_service_uuid[UUID128]);
       LEControllerStatus OmegaLEController_change_advertising_service128bit_data(uint8_t in_service_uuid[UUID128], const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
       LEControllerStatus OmegaLEController_change_manufacturer_data(const uint8_t *manufacturer_data, const size_t manufacturer_data_length);
-      LEControllerStatus OmegaLEController_set_scan_response_service_uuid16(uint16_t in_service_uuid);
-      LEControllerStatus OmegaLEController_set_scan_response_service_uuid32(uint32_t in_service_uuid);
-      LEControllerStatus OmegaLEController_set_scan_response_service_uuid128(uint8_t in_service_uuid[UUID128]);
       LEControllerStatus OmegaLEController_start_advertising();
       LEControllerStatus OmegaLEController_stop_advertising();
       LEControllerStatus OmegaLEController_manual_config(const char *in_config);
