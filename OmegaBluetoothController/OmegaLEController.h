@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Wednesday, 5th June 2024 1:26:29 am
+ * Last Modified: Wednesday, 5th June 2024 1:38:51 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ * 
+ * 05-06-2024	0m3g4	changed callback APIs to read uint32_t handle as well as user defined string name
  *
  * 04-06-2024	0m3g4	added,
                               OmegaLEController_set_advertising_complete_device_name
