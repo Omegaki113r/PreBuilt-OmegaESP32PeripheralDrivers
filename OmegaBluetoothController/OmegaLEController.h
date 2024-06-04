@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Tuesday, 4th June 2024 8:05:17 pm
+ * Last Modified: Wednesday, 5th June 2024 1:26:29 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -196,17 +196,27 @@ extern "C"
       typedef uint32_t ServiceHandle;
       typedef uint32_t ProfileHandle;
 
+      typedef struct
+      {
+            union
+            {
+                  CharacteristicHandle characteristic_handle;
+                  DescriptorHandle descriptor_handle;
+            };
+            char name[100];
+      } UserInformation_t;
+
       typedef void (*disconnect_cb_t)(ConnectedDeviceHandle);
       typedef void (*connect_cb_t)(ConnectedDeviceHandle, ConnectionParameter_t *);
-      typedef void (*read_cb_t)(CharacteristicHandle, uint8_t *, uint16_t *);
-      typedef void (*write_cb_t)(CharacteristicHandle, uint8_t *, size_t);
-      typedef void (*notification_state_change_cb_t)(CharacteristicHandle, ResponseStatus);
+      typedef void (*read_cb_t)(UserInformation_t, uint8_t *, uint16_t *);
+      typedef void (*write_cb_t)(UserInformation_t, uint8_t *, size_t);
+      typedef void (*notification_state_change_cb_t)(UserInformation_t, ResponseStatus);
 
       __attribute__((weak)) void device_connected_event_handler(ConnectedDeviceHandle, ConnectionParameter_t *);
       __attribute__((weak)) void device_disconnected_event_handler(ConnectedDeviceHandle);
-      __attribute__((weak)) void read_event_handler(CharacteristicHandle, uint8_t *, uint16_t *);
-      __attribute__((weak)) void write_event_handler(CharacteristicHandle, uint8_t *, uint16_t);
-      __attribute__((weak)) void notification_changed_event_handler(CharacteristicHandle, ResponseStatus);
+      __attribute__((weak)) void read_event_handler(UserInformation_t, uint8_t *, uint16_t *);
+      __attribute__((weak)) void write_event_handler(UserInformation_t, uint8_t *, uint16_t);
+      __attribute__((weak)) void notification_changed_event_handler(UserInformation_t, ResponseStatus);
 
       LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
       LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
@@ -216,7 +226,6 @@ extern "C"
       LEControllerStatus OmegaLEController_add_to_advertising_complete_service32bit_list(const uint32_t in_service_uuid, bool is_scan_response);
       LEControllerStatus OmegaLEController_add_to_advertising_complete_service128bit_list(const uint8_t in_service_uuid[UUID128], bool is_scan_response);
       LEControllerStatus OmegaLEController_set_advertising_device_id(const char *device_id, bool is_scan_response);
-
 
       LEControllerStatus OmegaLEController_change_advertising_tx_power_state(bool in_enable_tx_power, bool is_scan_response);
 
