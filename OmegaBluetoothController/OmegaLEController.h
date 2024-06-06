@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Wednesday, 5th June 2024 3:53:41 pm
+ * Last Modified: Thursday, 6th June 2024 1:44:03 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,7 +18,7 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
- * 
+ *
  * 05-06-2024	0m3g4	changed callback APIs to read uint32_t handle as well as user defined string name
  *
  * 04-06-2024	0m3g4	added,
@@ -260,7 +260,8 @@ extern "C"
       CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
       LEControllerStatus OmegaLEController_remove_characteristic(const CharacteristicHandle in_handle);
       LEControllerStatus OmegaLEController_set_characteristic_name(const CharacteristicHandle in_handle, const char in_characteristic_name[32]);
-      LEControllerStatus OmegaLEController_set_characteristic_data(const CharacteristicHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
+      LEControllerStatus OmegaLEController_set_characteristic_data_by_handle(const CharacteristicHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
+      LEControllerStatus OmegaLEController_set_characteristic_data_by_name(const char *in_name, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
       ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
       ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
       ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
@@ -273,9 +274,10 @@ extern "C"
       LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
       LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
 
-      LEControllerStatus OmegaLEController_send_notification(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
-      LEControllerStatus OmegaLEController_send_indication(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
-
+      LEControllerStatus OmegaLEController_send_notification_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_indication_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_notification_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_indication_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
 #endif
 
 #ifdef __cplusplus
