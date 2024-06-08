@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Saturday, 8th June 2024 3:16:35 am
+ * Last Modified: Saturday, 8th June 2024 10:21:23 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 08-06-2024	0m3g4	added OmegaLEController_change_advertising_service128bit_data_by_name
  *
  * 05-06-2024	0m3g4	changed callback APIs to read uint32_t handle as well as user defined string name
  *
@@ -238,6 +240,7 @@ extern "C"
       LEControllerStatus OmegaLEController_set_advertising_service_uuid128(uint8_t in_service_uuid[UUID128]);
       LEControllerStatus OmegaLEController_change_advertising_service16bit_data(uint16_t in_service_uuid, const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
       LEControllerStatus OmegaLEController_change_advertising_service128bit_data(uint8_t in_service_uuid[UUID128], const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
+      LEControllerStatus OmegaLEController_change_advertising_service128bit_data_by_name(const char *in_service_name, const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
       LEControllerStatus OmegaLEController_change_manufacturer_data(const uint8_t *manufacturer_data, const size_t manufacturer_data_length);
       LEControllerStatus OmegaLEController_start_advertising();
       LEControllerStatus OmegaLEController_stop_advertising();
