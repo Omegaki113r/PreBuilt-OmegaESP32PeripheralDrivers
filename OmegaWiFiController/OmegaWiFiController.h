@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Tuesday, 11th June 2024 12:20:06 pm
+ * Last Modified: Tuesday, 11th June 2024 6:17:10 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -18,6 +18,8 @@
  * HISTORY:
  * Date      	By	Comments
  * ----------	---	---------------------------------------------------------
+ *
+ * 11-06-2024	0m3g4	added SavedStationList_t, OmegaWiFiController_get_saved_stations
  *
  * 11-06-2024	0m3g4	added StationStatusInformation_t
                         added station_state_changed
@@ -90,6 +92,12 @@ extern "C"
         char ssid[33];
     } StationStatusInformation_t;
 
+    typedef struct
+    {
+        char stations[5][33];
+        uint8_t saved_station_count;
+    } SavedStationList_t;
+
     typedef uint64_t AccessPointHandle;
     typedef void (*sta_status_changed_cb_t)(StationStatus);
     typedef void (*ap_status_changed_cb_t)(APStatus);
@@ -110,6 +118,7 @@ extern "C"
     WiFiControllerStatus OmegaWiFiController_set_station_status_changed_callback(sta_status_changed_cb_t in_station_status_cb);
     WiFiControllerStatus OmegaWiFiController_set_access_point_status_changed_callback(ap_status_changed_cb_t in_access_point_status_cb);
     StationStatusInformation_t OmegaWiFiController_get_current_connected_station();
+    SavedStationList_t OmegaWiFiController_get_saved_stations();
 
 #ifdef __cplusplus
 }
