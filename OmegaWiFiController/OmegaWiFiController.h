@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Thursday, 13th June 2024 5:01:24 pm
+ * Last Modified: Sunday, 16th June 2024 1:38:24 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -84,6 +84,12 @@ extern "C"
 
     typedef struct
     {
+        uint32_t ip_address;
+        char ip_str[20 + 1];
+    } IPData_t;
+
+    typedef struct
+    {
         char m_ssid[33 + 1];
         uint8_t m_mac_address[8];
     } AccessPoint_t;
@@ -91,7 +97,11 @@ extern "C"
     typedef struct
     {
         StationStatus status;
-        char ssid[33 + 1];
+        union
+        {
+            char ssid[33 + 1];
+            IPData_t ip_address;
+        };
     } StationStatusInformation_t;
 
     typedef struct
@@ -127,6 +137,7 @@ extern "C"
     WiFiControllerStatus OmegaWiFiController_set_access_point_status_changed_callback(ap_status_changed_cb_t in_access_point_status_cb);
     StationStatusInformation_t OmegaWiFiController_get_current_connected_station();
     StationList_t OmegaWiFiController_get_saved_stations();
+    IPData_t OmegaWiFiController_get_ip_address();
     WiFiControllerStatus OmegaWiFiController_reorder_stations(const StationList_t in_new_stations);
     WiFiControllerStatus OmegaWiFiController_add_new_station(const Station_t in_new_station);
 
