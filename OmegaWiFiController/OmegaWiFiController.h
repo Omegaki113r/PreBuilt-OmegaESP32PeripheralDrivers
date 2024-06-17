@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Sunday, 16th June 2024 5:28:24 pm
+ * Last Modified: Monday, 17th June 2024 9:35:30 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -91,7 +91,7 @@ extern "C"
     typedef struct
     {
         char m_ssid[33 + 1];
-        uint8_t m_mac_address[8];
+        uint8_t m_mac_address[6];
     } AccessPoint_t;
 
     typedef struct
