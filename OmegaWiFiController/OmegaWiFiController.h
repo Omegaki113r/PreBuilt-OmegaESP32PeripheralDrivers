@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Monday, 17th June 2024 9:35:30 pm
+ * Last Modified: Wednesday, 19th June 2024 1:36:01 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -63,6 +63,7 @@ extern "C"
         STA_CONNECTING,
         STA_CONNECTED,
         STA_DISCONNECTED,
+        STA_AUTHENTICATION_FAILED,
         STA_CONNECTION_FAILED,
         STA_GOT_IP,
     } StationStatus;
