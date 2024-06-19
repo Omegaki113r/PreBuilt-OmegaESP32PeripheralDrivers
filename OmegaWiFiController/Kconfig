@@ -1,0 +1,7 @@
+menu "OmegaWiFiController Configuration"
+    config WIFI_DEBUG
+        bool "Enable WIFI Debugging"
+        default "y"
+        help
+            This is used to enable or disable debug logs
+endmenu

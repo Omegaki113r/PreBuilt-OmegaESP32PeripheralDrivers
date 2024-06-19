@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Wednesday, 19th June 2024 1:36:01 am
+ * Last Modified: Thursday, 20th June 2024 2:45:22 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -86,7 +86,7 @@ extern "C"
     typedef struct
     {
         uint32_t ip_address;
-        char ip_str[20 + 1];
+        char ip_address_str[20 + 1];
     } IPData_t;
 
     typedef struct
