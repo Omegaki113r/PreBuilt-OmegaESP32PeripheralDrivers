@@ -1,0 +1,7 @@
+menu "OmegaBLEController Configuration"
+    config BLE_DEBUG
+        bool "Enable BLE Debugging"
+        default "y"
+        help
+            This is used to enable or disable debug logs
+endmenu
