@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Saturday, 22nd June 2024 8:20:01 pm
+ * Last Modified: Sunday, 23rd June 2024 3:20:47 am
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -61,15 +61,17 @@ extern "C"
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <sdkconfig.h>
+
 #ifdef CONFIG_BT_ENABLED
 
-#include "esp_bt.h"
-#include "esp_bt_defs.h"
-#include "esp_bt_main.h"
-#include "esp_gap_ble_api.h"
-#include "esp_gatt_common_api.h"
-#include "esp_gattc_api.h"
-#include "esp_gatts_api.h"
+#include <esp_bt.h>
+#include <esp_bt_defs.h>
+#include <esp_bt_main.h>
+#include <esp_gap_ble_api.h>
+#include <esp_gatt_common_api.h>
+#include <esp_gattc_api.h>
+#include <esp_gatts_api.h>
 
 #define CHAR2INT(x) (('0' <= x && x <= '9') ? (x - '0') : (('a' <= x && x <= 'f') ? (10 + (x - 'a')) : (('A' <= x && x <= 'F') ? (10 + (x - 'A')) : (0))))
 
@@ -121,8 +123,17 @@ extern "C"
       {
             LE_SUCCESS,
             LE_INVALID_HANDLE,
+            LE_GATT_SERVER_NOT_ENABLED,
+            LE_GATT_CLIENT_NOT_ENABLED,
             LE_FAILED,
       } LEControllerStatus;
+
+      typedef enum
+      {
+            NOTIFICATION_INDICATION_DISABLED,
+            NOTIFICATION_ENABLED,
+            INDICATION_ENABLED,
+      } ResponseStatus;
 
       typedef enum
       {
@@ -136,13 +147,6 @@ extern "C"
             USER_RESPONSE = ESP_GATT_RSP_BY_APP,
             AUTO_RESPONSE = ESP_GATT_AUTO_RSP,
       } AutoResponseStatus;
-
-      typedef enum
-      {
-            NOTIFICATION_INDICATION_DISABLED,
-            NOTIFICATION_ENABLED,
-            INDICATION_ENABLED,
-      } ResponseStatus;
 
       typedef enum
       {
