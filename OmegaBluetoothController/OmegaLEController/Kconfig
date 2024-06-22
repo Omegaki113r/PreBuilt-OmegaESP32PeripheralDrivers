@@ -1,5 +1,5 @@
 menu "OmegaBLEController Configuration"
-    config BLE_DEBUG
+    config OMEGA_BLE_DEBUG
         bool "Enable BLE Debugging"
         default "y"
         help

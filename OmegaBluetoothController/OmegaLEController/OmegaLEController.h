@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 21st June 2024 2:10:57 pm
+ * Last Modified: Friday, 21st June 2024 5:30:51 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -222,66 +222,66 @@ extern "C"
       __attribute__((weak)) void write_event_handler(UserInformation_t, uint8_t *, uint16_t);
       __attribute__((weak)) void notification_changed_event_handler(UserInformation_t, ResponseStatus);
 
-      LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
-      LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
-      LEControllerStatus OmegaLEController_set_advertising_complete_device_name(const char *in_complete_device_name, bool is_scan_response);
-      LEControllerStatus OmegaLEController_set_advertising_short_device_name(const char *in_short_device_name, bool is_scan_response);
-      LEControllerStatus OmegaLEController_add_to_advertising_complete_service16bit_list(const uint16_t in_service_uuid, bool is_scan_response);
-      LEControllerStatus OmegaLEController_add_to_advertising_complete_service32bit_list(const uint32_t in_service_uuid, bool is_scan_response);
-      LEControllerStatus OmegaLEController_add_to_advertising_complete_service128bit_list(const uint8_t in_service_uuid[UUID128], bool is_scan_response);
-      LEControllerStatus OmegaLEController_set_advertising_device_id(const char *device_id, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_add_gatts_profile(ProfileHandle in_profile);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_device_name(const char *in_device_name);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_advertising_complete_device_name(const char *in_complete_device_name, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_advertising_short_device_name(const char *in_short_device_name, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_add_to_advertising_complete_service16bit_list(const uint16_t in_service_uuid, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_add_to_advertising_complete_service32bit_list(const uint32_t in_service_uuid, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_add_to_advertising_complete_service128bit_list(const uint8_t in_service_uuid[UUID128], bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_advertising_device_id(const char *device_id, bool is_scan_response);
 
-      LEControllerStatus OmegaLEController_change_advertising_tx_power_state(bool in_enable_tx_power, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_advertising_tx_power_state(bool in_enable_tx_power, bool is_scan_response);
 
-      LEControllerStatus OmegaLEController_change_advertising_service_data(const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
-      LEControllerStatus OmegaLEController_change_advertising_manufacturer_data(const uint8_t *in_manufacturer_data_buffer, const uint16_t in_manufacturer_data_buffer_length);
-      LEControllerStatus OmegaLEController_set_advertising_service_uuid16(uint16_t in_service_uuid);
-      LEControllerStatus OmegaLEController_set_advertising_service_uuid32(uint32_t in_service_uuid);
-      LEControllerStatus OmegaLEController_set_advertising_service_uuid128(uint8_t in_service_uuid[UUID128]);
-      LEControllerStatus OmegaLEController_change_advertising_service16bit_data(uint16_t in_service_uuid, const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
-      LEControllerStatus OmegaLEController_change_advertising_service128bit_data(uint8_t in_service_uuid[UUID128], const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
-      LEControllerStatus OmegaLEController_change_advertising_service128bit_data_by_name(const char *in_service_name, const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
-      LEControllerStatus OmegaLEController_change_manufacturer_data(const uint8_t *manufacturer_data, const size_t manufacturer_data_length);
-      LEControllerStatus OmegaLEController_start_advertising();
-      LEControllerStatus OmegaLEController_stop_advertising();
-      LEControllerStatus OmegaLEController_manual_config(const char *in_config);
-      LEControllerStatus OmegaLEController_init_LE();
-      LEControllerStatus OmegaLEController_get_bluetooth_mac_address(uint8_t in_mac_address[6]);
-      LEControllerStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
-      LEControllerStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
-      LEControllerStatus OmegaLEController_set_read_callback(read_cb_t in_read_cb);
-      LEControllerStatus OmegaLEController_set_write_callback(write_cb_t in_write_cb);
-      LEControllerStatus OmegaLEController_set_notification_state_changed_callback(notification_state_change_cb_t in_notification_state_changed_cb);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_advertising_service_data(const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_advertising_manufacturer_data(const uint8_t *in_manufacturer_data_buffer, const uint16_t in_manufacturer_data_buffer_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_advertising_service_uuid16(uint16_t in_service_uuid);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_advertising_service_uuid32(uint32_t in_service_uuid);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_advertising_service_uuid128(uint8_t in_service_uuid[UUID128]);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_advertising_service16bit_data(uint16_t in_service_uuid, const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_advertising_service128bit_data(uint8_t in_service_uuid[UUID128], const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_advertising_service128bit_data_by_name(const char *in_service_name, const uint8_t *in_service_data_buffer, const uint16_t in_service_data_buffer_length, bool is_scan_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_change_manufacturer_data(const uint8_t *manufacturer_data, const size_t manufacturer_data_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_start_advertising();
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_stop_advertising();
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_manual_config(const char *in_config);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_init_LE();
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_get_bluetooth_mac_address(uint8_t in_mac_address[6]);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_disconnect_callback(disconnect_cb_t in_disconnect_cb);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_connect_callback(connect_cb_t in_connect_cb);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_read_callback(read_cb_t in_read_cb);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_write_callback(write_cb_t in_write_cb);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_notification_state_changed_callback(notification_state_change_cb_t in_notification_state_changed_cb);
 
-      DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
-      DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
-      DescriptorHandle OmegaLEController_add_descriptor128(const CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
-      LEControllerStatus OmegaLEController_remove_descriptor(const DescriptorHandle in_handle);
-      LEControllerStatus OmegaLEController_set_descriptor_name(const DescriptorHandle in_handle, const char *in_descriptor_name);
-      LEControllerStatus OmegaLEController_set_descriptor_data(const DescriptorHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
-      CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid);
-      CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid);
-      CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
-      LEControllerStatus OmegaLEController_remove_characteristic(const CharacteristicHandle in_handle);
-      LEControllerStatus OmegaLEController_set_characteristic_name(const CharacteristicHandle in_handle, const char *in_characteristic_name);
-      LEControllerStatus OmegaLEController_set_characteristic_data_by_handle(const CharacteristicHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
-      LEControllerStatus OmegaLEController_set_characteristic_data_by_name(const char *in_name, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
-      ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
-      ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
-      ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
-      LEControllerStatus OmegaLEController_remove_service(const ServiceHandle in_handle);
-      LEControllerStatus OmegaLEController_set_service_name(const ServiceHandle in_handle, const char *in_service_name);
-      ProfileHandle OmegaLEController_add_profile();
-      LEControllerStatus OmegaLEController_remove_profile(const ProfileHandle in_handle);
-      LEControllerStatus OmegaLEController_set_profile_name(const ProfileHandle in_handle, const char *in_profile_name);
-      LEControllerStatus OmegaLEController_set_characteristic_response_state(const CharacteristicHandle in_handle, AutoResponseStatus in_auto_response);
-      LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
-      LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
+      [[__nodiscard__]] DescriptorHandle OmegaLEController_add_descriptor16(const CharacteristicHandle in_handle, uint16_t in_uuid);
+      [[__nodiscard__]] DescriptorHandle OmegaLEController_add_descriptor32(const CharacteristicHandle in_handle, uint32_t in_uuid);
+      [[__nodiscard__]] DescriptorHandle OmegaLEController_add_descriptor128(const CharacteristicHandle in_handle, uint8_t in_uuid[UUID128]);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_remove_descriptor(const DescriptorHandle in_handle);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_descriptor_name(const DescriptorHandle in_handle, const char *in_descriptor_name);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_descriptor_data(const DescriptorHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
+      [[__nodiscard__]] CharacteristicHandle OmegaLEController_add_characteristic16(const ServiceHandle in_handle, uint16_t in_uuid);
+      [[__nodiscard__]] CharacteristicHandle OmegaLEController_add_characteristic32(const ServiceHandle in_handle, uint32_t in_uuid);
+      [[__nodiscard__]] CharacteristicHandle OmegaLEController_add_characteristic128(const ServiceHandle in_handle, uint8_t in_uuid[UUID128]);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_remove_characteristic(const CharacteristicHandle in_handle);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_name(const CharacteristicHandle in_handle, const char *in_characteristic_name);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_data_by_handle(const CharacteristicHandle in_handle, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_data_by_name(const char *in_name, const uint8_t *in_data_buffer, size_t in_data_buffer_length);
+      [[__nodiscard__]] ServiceHandle OmegaLEController_add_service16(const ProfileHandle in_handle, uint16_t in_uuid);
+      [[__nodiscard__]] ServiceHandle OmegaLEController_add_service32(const ProfileHandle in_handle, uint32_t in_uuid);
+      [[__nodiscard__]] ServiceHandle OmegaLEController_add_service128(const ProfileHandle in_handle, uint8_t in_uuid[UUID128]);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_remove_service(const ServiceHandle in_handle);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_service_name(const ServiceHandle in_handle, const char *in_service_name);
+      [[__nodiscard__]] ProfileHandle OmegaLEController_add_profile();
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_remove_profile(const ProfileHandle in_handle);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_profile_name(const ProfileHandle in_handle, const char *in_profile_name);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_response_state(const CharacteristicHandle in_handle, AutoResponseStatus in_auto_response);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
 
-      LEControllerStatus OmegaLEController_send_notification_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
-      LEControllerStatus OmegaLEController_send_indication_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
-      LEControllerStatus OmegaLEController_send_notification_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
-      LEControllerStatus OmegaLEController_send_indication_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_send_notification_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_send_indication_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_send_notification_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
+      [[__nodiscard__]] LEControllerStatus OmegaLEController_send_indication_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
 #endif
 
 #ifdef __cplusplus
