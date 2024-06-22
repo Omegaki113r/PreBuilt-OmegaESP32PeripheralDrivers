@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Friday, 21st June 2024 5:30:51 pm
+ * Last Modified: Saturday, 22nd June 2024 8:20:01 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -60,8 +60,6 @@ extern "C"
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <sdkconfig.h>
 
 #ifdef CONFIG_BT_ENABLED
 
