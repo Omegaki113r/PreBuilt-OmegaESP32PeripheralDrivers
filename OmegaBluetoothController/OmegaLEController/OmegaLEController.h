@@ -10,7 +10,7 @@
  * File Created: Saturday, 18th May 2024 10:28:57 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Sunday, 23rd June 2024 3:20:47 am
+ * Last Modified: Sunday, 23rd June 2024 5:22:27 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -280,10 +280,15 @@ extern "C"
       [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_properties(const CharacteristicHandle in_handle, const CharacteristicProperty in_property);
       [[__nodiscard__]] LEControllerStatus OmegaLEController_set_characteristic_permission(const CharacteristicHandle in_handle, const GATTPermission in_permission);
 
+      LEControllerStatus OmegaLEController_send_notification_by_handle_all(const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length); /*FIXME - Maybe look into giving out an error if 1 or more devices are not found?????*/
       [[__nodiscard__]] LEControllerStatus OmegaLEController_send_notification_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_indication_by_handle_all(const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length); /*FIXME - Maybe look into giving out an error if 1 or more devices are not found?????*/
       [[__nodiscard__]] LEControllerStatus OmegaLEController_send_indication_by_handle(const ConnectedDeviceHandle in_device_handle, const CharacteristicHandle in_handle, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_notification_by_name_all(const char *in_name, uint8_t *in_data, size_t in_data_length); /*FIXME - Maybe look into giving out an error if 1 or more devices are not found?????*/
       [[__nodiscard__]] LEControllerStatus OmegaLEController_send_notification_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
+      LEControllerStatus OmegaLEController_send_indication_by_name_all(const char *in_name, uint8_t *in_data, size_t in_data_length); /*FIXME - Maybe look into giving out an error if 1 or more devices are not found?????*/
       [[__nodiscard__]] LEControllerStatus OmegaLEController_send_indication_by_name(const ConnectedDeviceHandle in_device_handle, const char *in_name, uint8_t *in_data, size_t in_data_length);
+
 #endif
 
 #ifdef __cplusplus
