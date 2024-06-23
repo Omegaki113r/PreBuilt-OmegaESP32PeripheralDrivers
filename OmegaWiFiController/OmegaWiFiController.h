@@ -10,7 +10,7 @@
  * File Created: Monday, 13th May 2024 4:07:25 pm
  * Author: Omegaki113r (omegaki113r@gmail.com)
  * -----
- * Last Modified: Thursday, 20th June 2024 6:43:18 pm
+ * Last Modified: Sunday, 23rd June 2024 7:50:14 pm
  * Modified By: Omegaki113r (omegaki113r@gmail.com)
  * -----
  * Copyright 2024 - 2024 0m3g4ki113r, Xtronic
@@ -136,9 +136,9 @@ extern "C"
     WiFiControllerStatus OmegaWiFiController_set_scan_result_callback(scan_result_cb_t in_scan_result_cb);
     WiFiControllerStatus OmegaWiFiController_set_station_status_changed_callback(sta_status_changed_cb_t in_station_status_cb);
     WiFiControllerStatus OmegaWiFiController_set_access_point_status_changed_callback(ap_status_changed_cb_t in_access_point_status_cb);
-    StationStatusInformation_t OmegaWiFiController_get_current_connected_station();
-    StationList_t OmegaWiFiController_get_saved_stations();
-    IPData_t OmegaWiFiController_get_ip_address();
+    [[__nodiscard__]] StationStatusInformation_t OmegaWiFiController_get_current_connected_station();
+    [[__nodiscard__]] StationList_t OmegaWiFiController_get_saved_stations();
+    [[__nodiscard__]] IPData_t OmegaWiFiController_get_ip_address();
     WiFiControllerStatus OmegaWiFiController_reorder_stations(const StationList_t in_new_stations);
     WiFiControllerStatus OmegaWiFiController_add_new_station(const Station_t in_new_station);
 
